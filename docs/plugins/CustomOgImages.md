@@ -236,7 +236,8 @@ export const customImage: SocialImageOptions["imageStructure"] = (
 
 The following example includes a customized social image with a custom background and formatted date:
 
-```typescript title="custom-og.tsx"
+```
+typescript title="custom-og.tsx"
 export const og: SocialImageOptions["Component"] = (
   cfg: GlobalConfiguration,
   fileData: QuartzPluginData,

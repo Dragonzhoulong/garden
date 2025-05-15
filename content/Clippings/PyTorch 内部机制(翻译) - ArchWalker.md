@@ -2,7 +2,7 @@
 title: "PyTorch 内部机制(翻译) - ArchWalker"
 source: "https://archwalker.github.io/blog/2019/05/27/pytorch-internals.html"
 author:
-published:
+published: 2025-5-15
 created: 2025-04-29
 description: "PyTorch internals此为原创文章，转载请务必保留出处  译者序：这篇博文是一篇非常新的介绍PyTorch内部机制的文章，作者Edward Z Yang来自于Stanford大学，是PyTorch的核心开发者之一。文章中介绍了如何阅读PyTorch源码和扩展PyTorch的技巧。目前讲PyTorch底..."
 tags:

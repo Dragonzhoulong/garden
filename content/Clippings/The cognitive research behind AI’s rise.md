@@ -3,7 +3,7 @@ title: "The cognitive research behind AI’s rise"
 source: "https://news.stanford.edu/stories/2024/11/from-brain-to-machine-the-unexpected-journey-of-neural-networks"
 author:
   - "[[Stanford University]]"
-published: 2024年11月18日
+published: 2024-11-18
 created: 2025-04-28
 description: "Federal funding for cognitive research unexpectedly spurred significant advancements in artificial intelligence, laying the groundwork for the systems that power today's AI technology."
 tags:
