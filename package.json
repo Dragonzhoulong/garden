@@ -14,8 +14,9 @@
   "scripts": {
     "start": "npx quartz build --serve",
     "build": "npx quartz build",
-    "check": "npx quartz check",
-    "test": "npx quartz test"
+    "check": "tsc --noEmit && npx prettier . --check",
+    "format": "npx prettier . --write",
+    "test": "tsx --test"
   },
   "engines": {
     "npm": ">=9.3.1",
