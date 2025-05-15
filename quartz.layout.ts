@@ -33,7 +33,7 @@ const left = [
       limit: 4,
       filter: (f) =>
         f.slug!.startsWith("Clippings/") && f.slug! !== "Clippings/index" && !f.frontmatter?.noindex,
-      linkToMore: "posts/" as SimpleSlug,
+      linkToMore: "Clippings/" as SimpleSlug,
     }),
   ),
   Component.DesktopOnly(
