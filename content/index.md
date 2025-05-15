@@ -15,21 +15,21 @@ I'm passionate about technology and learning. This space serves as my personal k
 
 Here are some places you might want to visit:
 
-- [Blog Posts](/posts/): A collection of my writings and thoughts
-- [Projects](/thoughts/craft.md): My personal projects and works
-- [Books](/books): Books I'm reading or planning to read
-
 ```poetry
 - Dragonzhoulong :)
 ```
 
 
 这是我的数字花园，首先我会拿来记录一些关于基础算法和AI Infra相关的事情。
-我打算在接下来的一个月里，突击学习关于大模型推理和agent等相关的内容，并打算在暑期找到大模型相关的实习。[[note]]
+我打算在接下来的一个月里，突击学习关于大模型推理和agent等相关的内容，并打算在暑期找到大模型相关的实习。
 
 ## 收集的一些clippings
-[[EECS498 笔记]]
+
+
+[[分享｜如何科学刷题？- 讨论 - 力扣（LeetCode）]]
+[[PyTorch 内部机制(翻译) - ArchWalker]]
 [[卷积神经网络 CNN简史与原理]]
+
 
 ## 和ChatGPT谈心
 
