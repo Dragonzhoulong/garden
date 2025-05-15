@@ -26,9 +26,10 @@ Here are some places you might want to visit:
 ## 收集的一些clippings
 
 
-[[clippings/分享｜如何科学刷题？- 讨论 - 力扣（LeetCode）]]
-[[clippings/iflow101]]
 
+[[Clippings/分享｜如何科学刷题？- 讨论 - 力扣（LeetCode）|分享｜如何科学刷题？- 讨论 - 力扣（LeetCode）]]
+[[Clippings/卷积神经网络 CNN简史与原理|卷积神经网络 CNN简史与原理]]
+[[Clippings/iflow101|iflow101]]
 ## 和ChatGPT谈心
 
 

@@ -38,10 +38,10 @@ const left = [
   ),
   Component.DesktopOnly(
     Component.RecentNotes({
-      title: "Recent Notes",
+      title: "Recent posts",
       limit: 3,
-      filter: (f) => f.slug!.startsWith("thoughts/"),
-      linkToMore: "thoughts/" as SimpleSlug,
+      filter: (f) => f.slug!.startsWith("posts/"),
+      linkToMore: "posts/" as SimpleSlug,
     }),
   ),
 ]
