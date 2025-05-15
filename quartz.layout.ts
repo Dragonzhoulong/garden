@@ -32,7 +32,9 @@ const left = [
       title: "Recent Writing",
       limit: 4,
       filter: (f) =>
-        f.slug!.startsWith("Clippings/") && f.slug! !== "Clippings/index" && !f.frontmatter?.noindex,
+        f.slug!.startsWith("Clippings/") &&
+        f.slug! !== "Clippings/index" &&
+        !f.frontmatter?.noindex,
       linkToMore: "Clippings/" as SimpleSlug,
     }),
   ),
@@ -48,11 +50,7 @@ const left = [
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
-  ],
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta(), Component.TagList()],
   left,
   right: [
     Component.Graph({
