@@ -32,7 +32,7 @@ const left = [
       title: "Recent Clippings",
       limit: 4,
       filter: (f) =>
-        f.slug!.startsWith("Clippings/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+        f.slug!.startsWith("Clippings/") && f.slug! !== "Clippings/index" && !f.frontmatter?.noindex,
       linkToMore: "posts/" as SimpleSlug,
     }),
   ),
