@@ -26,10 +26,8 @@ Here are some places you might want to visit:
 ## 收集的一些clippings
 
 
-[[分享｜如何科学刷题？- 讨论 - 力扣（LeetCode）]]
-[[PyTorch 内部机制(翻译) - ArchWalker]]
-[[卷积神经网络 CNN简史与原理]]
-
+[[clippings/分享｜如何科学刷题？- 讨论 - 力扣（LeetCode）]]
+[[clippings/iflow101]]
 
 ## 和ChatGPT谈心
 

@@ -9,8 +9,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0",
-      Twitter: "https://twitter.com/_jzhao",
+      GitHub: "https://github.com/Dragonzhoulong",
+      Twitter: "https://x.com/Victor36198435",
     },
   }),
 }
@@ -29,8 +29,8 @@ const left = [
   }),
   Component.DesktopOnly(
     Component.RecentNotes({
-      title: "Recent Clippings",
-      limit: 4,
+      title: "Recent Writing",
+      limit: 5,
       filter: (f) =>
         f.slug!.startsWith("Clippings/") && f.slug! !== "Clippings/index" && !f.frontmatter?.noindex,
       linkToMore: "Clippings/" as SimpleSlug,
@@ -39,7 +39,7 @@ const left = [
   Component.DesktopOnly(
     Component.RecentNotes({
       title: "Recent Notes",
-      limit: 2,
+      limit: 3,
       filter: (f) => f.slug!.startsWith("thoughts/"),
       linkToMore: "thoughts/" as SimpleSlug,
     }),
@@ -57,10 +57,10 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.Graph({
       localGraph: {
-        showTags: false,
+        showTags: true,
       },
       globalGraph: {
-        showTags: false,
+        showTags: true,
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),
