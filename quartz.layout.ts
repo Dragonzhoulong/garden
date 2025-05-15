@@ -28,11 +28,11 @@ const left = [
     ],
   }),
   Component.DesktopOnly(
-    Component.RecentNotes({
+    Component.RecentClippings({
       title: "Recent Writing",
       limit: 4,
       filter: (f) =>
-        f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+        f.slug!.startsWith("Clippings/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
       linkToMore: "posts/" as SimpleSlug,
     }),
   ),
