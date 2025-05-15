@@ -8,14 +8,14 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "jzhao.xyz",
+    pageTitle: "Dragonzhoulong's Garden",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "jzhao.xyz",
+    baseUrl: "dragonzhoulong.github.io/garden",
     ignorePatterns: ["private", "templates"],
     defaultDateType: "created",
     theme: {
