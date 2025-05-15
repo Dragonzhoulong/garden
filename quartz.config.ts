@@ -66,7 +66,7 @@ const config: QuartzConfig = {
       Plugin.SyntaxHighlighting(),
       Plugin.ObsidianFlavoredMarkdown({
         enableInHtmlEmbed: false,
-        parseTags: false,
+        parseTags: true,
         mermaid: false,
       }),
       Plugin.GitHubFlavoredMarkdown(),
