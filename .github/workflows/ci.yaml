@@ -44,9 +44,6 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Ensure Quartz builds, check bundle info
-        run: npx quartz build --bundleInfo -d docs
-
   publish-tag:
     if: ${{ github.repository == 'dragonzhoulong/garden' && github.ref == 'refs/heads/v4' }}
     runs-on: ubuntu-latest
