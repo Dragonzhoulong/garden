@@ -24,6 +24,7 @@ const left = [
         grow: true,
       },
       { Component: Component.Darkmode() },
+      { Component: Component.TableOfContents() },
     ],
   }),
   Component.DesktopOnly(
