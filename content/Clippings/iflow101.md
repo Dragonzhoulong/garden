@@ -317,3 +317,88 @@ apt install libgoogle-glog-dev
 
 脚本设置的环境变量大有问题。包安装的有问题。待整理待提交若干PR
 
+
+
+### tmux的妙用
+使用mac连接游戏本服务器跑任务时，会遇到这样的情况，担心连接断掉导致服务器中进程也被中止。
+要实现 SSH 断开后程序还能继续运行，最推荐的方法就是使用 tmux，它可以在后台维持终端会话，哪怕你退出 SSH，程序也不会中断。
+
+下面是完整教程：
+
+⸻
+
+#### ✅ 一次性设置流程（适用于任何程序）
+
+第 1 步：连接远程服务器
+
+`ssh yourname@your-server-ip`
+
+
+⸻
+
+第 2 步：创建 tmux 会话
+
+`tmux new -s mysession`
+
+这会新建一个名为 mysession 的会话并进入其中。
+
+⸻
+
+第 3 步：在 tmux 中运行你的程序
+
+比如你要运行 iFlow：
+
+`./run_flow.py -d picorv32 -s droute`
+
+
+⸻
+
+第 4 步：退出 tmux（但不终止程序）
+
+按下：
+
+`Ctrl + b` 然后松开，再按 `d`
+
+你会看到提示：[detached (from session mysession)]
+
+这表示你安全退出了 tmux，会话还在后台运行。
+
+⸻
+
+第 5 步：下次 SSH 再连接回来，重进会话
+
+```
+ssh yourname@your-server-ip
+tmux attach -t mysession
+```
+
+⸻
+
+📌 查看/管理多个会话（如果你忘了名字）
+
+`tmux ls`
+
+
+⸻
+
+❌ 关闭会话（程序跑完以后）
+
+进入会话后按：
+
+`exit`
+
+或手动` Ctrl + C` 停止程序，tmux 会自动关闭空会话。
+
+⸻
+
+🔄 总结口诀
+
+tmux new -s 名字       # 创建并进入
+Ctrl+b, d              # 暂时离开
+tmux attach -t 名字    # 回来继续
+tmux ls                # 看有哪些会话
+
+
+⸻
+
+如果你用的是 VS Code Remote SSH 模式，VS Code 断掉会导致进程终止，而 tmux 能完美解决这个问题。
