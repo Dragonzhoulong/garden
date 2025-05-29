@@ -186,5 +186,41 @@ delta HPWL                  128 %
 ```
 
 
+## 从RTL到GDS
 
-## report解读
+### 修改scripts/mycpu_top/synth.yosys_0.9.tcl
+
+指明需要编译的文件，感觉很不方便啊，我如下的是使用`tree`得到路径后交给大模型完成格式的转变,我相信有简易的文本处理函数能够完成该功能（当然有前提需要路径中没有无关的文件）
+
+``` tcl
+set VERILOG_INCLUDE_DIRS "\
+"
+set VERILOG_FILES " \
+$RTL_PATH/mycpu_top.v \
+$RTL_PATH/mycpu_sram.v \
+$RTL_PATH/IF_stage.v \
+$RTL_PATH/ID_stage.v \
+$RTL_PATH/EXE_stage.v \
+$RTL_PATH/MEM_stage.v \
+$RTL_PATH/WB_stage.v \
+$RTL_PATH/alu.v \
+$RTL_PATH/CP0.v \
+$RTL_PATH/pre_decode.v \
+$RTL_PATH/regfile.v \
+$RTL_PATH/tlb.v \
+$RTL_PATH/tools.v \
+$RTL_PATH/mmu/i_mmu.v \
+$RTL_PATH/mmu/d_mmu.v \
+$RTL_PATH/sram2axi_bridge/sram2axi_bridge.v \
+$RTL_PATH/sram2axi_bridge/AR_R_channel.v \
+$RTL_PATH/sram2axi_bridge/AW_W_B_channel.v \
+$RTL_PATH/sram2axi_bridge/AW_W_channel.v \
+$RTL_PATH/sram2axi_bridge/B_channel.v \
+
+```
+
+
+这个项目完全做的很难顶，项目文档很多地方语焉不.
+
+### 更换工艺库
+
