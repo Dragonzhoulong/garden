@@ -1,10 +1,12 @@
-## readme编写的问题
+## RTL2GDS中readme编写的问题
 
 ``` shell
 # 建议添加一行，一些小白可能在这个项目才开始用docker
 docker run -it iedaopensource/iflow:latest
 ```
-## 使用docker的问题
+# 使用docker部署的的问题
+
+## docker镜像中无法打开GUI
 
 我使用mac连接ubuntu远程(没太解决明白这个远程图像显示到mac上)。
 然后使用docker来作为运行环境，也面临一个宿主机访问远程生成图像的问题,希望也能在文档中提到该问题的解决方案。
@@ -101,11 +103,12 @@ apt-get install -y \
 这些方法可以根据具体需求选择使用。对于iFlow项目，推荐使用X11转发方式，或者将文件复制到宿主机查看。
 
 
-太绕了，我选择直接源码部署,并且docker容易有性能损失。
+太绕了，我选择直接源码部署,docker不但有性能损失还得手动复制gds文件。
 
 
 
 ## 我的平台
+
 ```
 (base) along@alongforhappy: /home/along/Desktop/iFlow/scripts git:(master) 
 ➜   neofetch               
@@ -190,7 +193,7 @@ ls /usr/lib/x86_64-linux-gnu/libtcl8.5.so
 ### uart示例运行
 
 ``` python
-uart            = Flow('uart','asap7','HS','TYP','TYP')
+uart = Flow('uart','asap7','HS','TYP','TYP')
 ```
 
 1. 首先，这个文件定义了一个名为 `Flow` 的类（从导入语句 `from data_def import *` 可以看出），用于配置不同的设计流程。
@@ -223,7 +226,7 @@ ibex = Flow('ibex_core', 'sky130', 'HS', 'TYP', '')
 这个配置文件主要用于设置不同数字电路设计项目的工艺参数，这些参数将用于后续的物理设计流程，如综合、布局布线等。每个设计都根据其特定需求选择了合适的工艺库和参数配置。
 
 
-我来为您详细解读这个UART设计的流程：
+UART设计的流程：
 
 1. **设计概述**
 - UART（通用异步收发器）是一个百门级到千门级的数字设计
@@ -307,26 +310,15 @@ iEDA: error while loading shared libraries: libglog.so.0: cannot open shared obj
 
 ```
 
-GPT给的答案不对
 
-
-```
-apt install libgoogle-glog-dev
-```
-
-
-脚本设置的环境变量大有问题。包安装的有问题。待整理待提交若干PR
-
+docker部署设置的环境变量大有问题。包安装的有问题。待整理待提交若干PR
 
 
 ### tmux的妙用
-使用mac连接游戏本服务器跑任务时，会遇到这样的情况，担心连接断掉导致服务器中进程也被中止。
+使用mac连接服务器跑任务时，会遇到这样的情况，担心SSH连接断掉导致服务器中进程也被中止。
 要实现 SSH 断开后程序还能继续运行，最推荐的方法就是使用 tmux，它可以在后台维持终端会话，哪怕你退出 SSH，程序也不会中断。
 
 下面是完整教程：
-
-⸻
-
 #### ✅ 一次性设置流程（适用于任何程序）
 
 第 1 步：连接远程服务器
@@ -380,11 +372,12 @@ tmux attach -t mysession
 
 🔄 总结口诀
 
+```
 tmux new -s 名字       # 创建并进入
 Ctrl+b, d              # 暂时离开
 tmux attach -t 名字    # 回来继续
 tmux ls                # 看有哪些会话
-
+```
 
 ⸻
 
@@ -408,7 +401,7 @@ uart设计是一种通用串行数据总线的设计，是一个百门级到千�
 
 iFlow的文档看的一头雾水，我将先参考一下OpenLane的文档跑出来picorv32先。
 
-## OpenLane
+# OpenLane
 ### OpenLane架构
 
 	
@@ -417,7 +410,7 @@ iFlow的文档看的一头雾水，我将先参考一下OpenLane的文档跑出�
 
 大概了解一下RTL到GDS的过程中需要注意的地方。
 
-## iFlow报错
+# iFlow体验
 
 ### 先卡在了布局阶段
 
@@ -489,15 +482,17 @@ Cannot open input file "/home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc".
 解决办法：
 	1.	确认文件是否存在
 
-ls -l /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc
+`ls -l /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc`
 
-	•	如果不存在，说明路径错了或者文件没放好。
+•	如果不存在，说明路径错了或者文件没放好。
 
-	2.	如果文件不存在，你有该 SDC 文件吗？
-	•	如果没有，你需要从项目或者网络资源获取这个时序约束文件。
-	•	如果暂时不需要约束，可以临时修改 abc.script 去掉或注释掉 read_constr 这一行。
-	3.	修改 abc.script
-找到 read_constr -v /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc 这一行，注释掉（前面加 #）或者删除。
+2.	如果文件不存在，你有该 SDC 文件吗？
+
+•	如果没有，你需要从项目或者网络资源获取这个时序约束文件。
+•	如果暂时不需要约束，可以临时修改 abc.script 去掉或注释掉 read_constr 这行。
+
+3.	修改 abc.script
+找到 read_constr -v /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc 这一行，注释掉
 	4.	再重新运行 ABC
 
 ~/Desktop/iFlow/tools/yosys4be891e8/bin/yosys-abc -s -f /tmp/yosys-abc-KVSWxH/abc.script
@@ -586,7 +581,7 @@ delta HPWL                  128 %
 
 ### 修改scripts/mycpu_top/synth.yosys_0.9.tcl
 
-手动指明需要编译的文件，感觉很不方便啊，我如下的是使用`tree`得到路径后交给大模型完成格式的转变,我相信有简易的文本处理函数能够完成该功能（当然有前提需要路径中没有无关的文件,也可以类似.gitignore这样的思路让用户把不需要参与编译的文件显示声明在.ifowignore中）
+手动指明需要编译的文件，感觉很不方便啊,我相信有简易的文本处理函数能够完成该功能（当然有前提需要路径中没有无关的文件,也可以类似.gitignore这样的思路让用户把不需要参与编译的文件显示声明在.ifowignore中）
 
 ``` tcl
 set VERILOG_INCLUDE_DIRS "\
@@ -701,7 +696,7 @@ Placement utilization: 72.34%
 #### 多次调整
 在sky130工艺库下，我多次调整area，首先是`2000*2000`左右的大小，时钟周期设置为420发现虽然violations在一段时间后陡然增加并且在`droute`这一步耗时非常久(虽然我的平台内存64G仍然跑了一夜没有出结果)
 
-#### 更换工艺
+#### 更换工艺库
 
 sky130工艺金属层过少导致overflow难以解决。因此我更换了nangate45工艺，这一工艺拥有更多的金属层。更换之后overflow很快就被解决。
 
@@ -745,7 +740,101 @@ picorv32        = Flow('picorv32','nangate45','HD','TYP','')
 
 
 ```
-## GDS
+
+# 最终GDS
 
 很快啊，啪的一下就出结果了
 ![[Clippings/images/iflow101_results.png]]
+发现有效面积太小，开始多次尝试
+
+``` tcl
+set DIE_AREA            "0 0 600.2 600.2" 
+set CORE_AREA           "1.08 1.08 580.12 580.12" 
+
+[INFO DRT-0172] cpu time = 01:10:09, elapsed time = 00:10:45, memory = 1310.07 (MB), peak = 1310.07 (MB)
+
+[INFO DRT-0180] post processing ...
+Current  full name : picorv32.layout.klayout_0.26.2.nangate45.HD.TYP.default
+Previous full name : picorv32.droute.openroad_1.2.0.nangate45.HD.TYP.default
+
+klayoutInsertLef.py : Insert lefs into lyt file of klayout
+klayoutInsertLef.py : Finished
+[INFO] Clearing cells...
+[INFO] Merging GDS files...
+	/home/along/Desktop/iFlow/foundry/nangate45/gds/NangateOpenCellLibrary.gds
+[INFO] Copying toplevel cell 'picorv32'
+
+```
+
+![[Clippings/images/Screenshot from 2025-05-31 23-43-36.png]]
+
+
+----
+
+
+``` tcl
+
+set DIE_AREA            "0 0 150.2 150.2" 
+set CORE_AREA           "1.08 1.08 140.12 140.12" 
+
+[INFO ODB-0134] Finished DEF file: /home/along/Desktop/iFlow/result/picorv32.pdn.openroad_1.2.0.nangate45.HD.TYP.default/picorv32.def
+[INFO GPL-0002] DBU: 2000
+[INFO GPL-0003] SiteSize: 380 2800
+[INFO GPL-0004] CoreAreaLxLy: 1900 0
+[INFO GPL-0005] CoreAreaUxUy: 280060 280000
+[INFO GPL-0006] NumInstances: 14145
+[INFO GPL-0007] NumPlaceInstances: 13894
+[INFO GPL-0008] NumFixedInstances: 251
+[INFO GPL-0009] NumDummyInstances: 0
+[INFO GPL-0010] NumNets: 15610
+[INFO GPL-0011] NumPins: 45356
+[INFO GPL-0012] DieAreaLxLy: 0 0
+[INFO GPL-0013] DieAreaUxUy: 300400 300400
+[INFO GPL-0014] CoreAreaLxLy: 1900 0
+[INFO GPL-0015] CoreAreaUxUy: 280060 280000
+[INFO GPL-0016] CoreArea: 77884800000
+[INFO GPL-0017] NonPlaceInstsArea: 267064000
+[INFO GPL-0018] PlaceInstsArea: 90882624000
+[INFO GPL-0019] Util(%): 117.09
+[INFO GPL-0020] StdInstsArea: 90882624000
+[INFO GPL-0021] MacroInstsArea: 0
+[ERROR GPL-0301] Utilization exceeds 100%.
+
+```
+
+失败
+
+---------
+
+
+```tcl
+
+
+set DIE_AREA            "0 0 300.2 300.2" 
+set CORE_AREA           "1.08 1.08 290.12 290.12" 
+
+-------------------------
+ FR_MASTERSLICE         0
+         metal1     52706
+         metal2     58611
+         metal3      7523
+         metal4      1378
+         metal5        81
+         metal6         0
+         metal7         0
+         metal8         0
+         metal9         0
+-------------------------
+                   120299
+
+
+[INFO DRT-0172] cpu time = 01:09:09, elapsed time = 00:10:22, memory = 1267.77 (MB), peak = 1267.77 (MB)
+
+```
+
+比较合适的一个参数结果
+
+![[Clippings/images/Screenshot from 2025-05-31 23-56-09.png]]
+## 提出建议
+需要用户手动填写需要编译的文件，非常不方便。
+有简易的文本处理函数能够完成该功能（当然有前提需要路径中没有无关的文件,也可以类似.gitignore这样的思路让用户把不需要参与编译的文件显示声明在.ifowignore中）思路如下，用户将顶层设计模块放在文件夹中，脚本自动递归的读取该文件夹中的编译文件，读取.iflowignore来去掉不参与编译的文件。
