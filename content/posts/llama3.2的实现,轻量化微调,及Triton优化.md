@@ -331,3 +331,7 @@ https://www.gongjiyun.com/
 
 
 ## Triton
+
+Triton 把 CUDA 中 `threads` 这一级别的分配自动完成了，用户只需要参与 `block` 级别的分配。
+
+
