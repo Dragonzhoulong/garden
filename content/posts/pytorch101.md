@@ -1,3 +1,12 @@
+---
+title: " pytorch101"
+date: " 2025-06-21"
+tags:
+  - pytorch
+  - posts
+---
+
+
 ```python
 def take_one_elem_per_col(x: Tensor) -> Tensor:
 

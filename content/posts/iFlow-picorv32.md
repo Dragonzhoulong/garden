@@ -103,7 +103,7 @@ ls -l /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc
 	•	如果没有，你需要从项目或者网络资源获取这个时序约束文件。
 	•	如果暂时不需要约束，可以临时修改 abc.script 去掉或注释掉 read_constr 这一行。
 	3.	修改 abc.script
-找到 read_constr -v /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc 这一行，注释掉（前面加 #）或者删除。
+找到 read_constr -v /home/along/Desktop/iFlow/rtl/picorv32/picorv32.sdc 这一行，注释掉（前面加
 	4.	再重新运行 ABC
 
 ~/Desktop/iFlow/tools/yosys4be891e8/bin/yosys-abc -s -f /tmp/yosys-abc-KVSWxH/abc.script

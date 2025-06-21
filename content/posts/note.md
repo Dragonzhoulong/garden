@@ -3,6 +3,7 @@ title: Example Title
 draft: false
 tags:
   - example-tag
+created: 2025-05-01
 ---
 太好了！你问得非常到位，我们一步步来讲清楚**版本一**的写法。这个版本的目标是：
 
