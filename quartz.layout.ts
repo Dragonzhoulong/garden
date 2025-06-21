@@ -29,7 +29,7 @@ const left = [
   Component.DesktopOnly(
     Component.RecentNotes({
       title: "Recent Writing",
-      limit: 4,
+      limit: 3,
       filter: (f) =>
         f.slug!.startsWith("Clippings/") &&
         f.slug! !== "Clippings/index" &&
