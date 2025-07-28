@@ -40,4 +40,4 @@ Here are some places you might want to visit:
 
 [[posts/LLM101|LLM101]]
 
-[[关于科研]]
+[[posts/关于科研|关于科研]]
