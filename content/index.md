@@ -20,8 +20,8 @@ Here are some places you might want to visit:
 ```
 
 
-这是我的数字花园，首先我会拿来记录一些关于基础算法和AI Infra相关的事情。
-我打算在接下来的一个月里，突击学习关于大模型推理和agent等相关的内容，并打算在暑期找到大模型相关的实习。
+这是我的数字花园，首先我会拿来记录一些关于基础算法和AI Infra 还有科研相关的事情。
+
 
 ## 收集的一些clippings
 
@@ -39,3 +39,5 @@ Here are some places you might want to visit:
 [[posts/矩阵微分|矩阵微分]]
 
 [[posts/LLM101|LLM101]]
+
+[[关于科研]]
