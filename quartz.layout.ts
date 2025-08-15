@@ -6,8 +6,27 @@ import { SimpleSlug } from "./quartz/util/path"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
-  footer: Component.Footer({
+  afterBody: [
+    Component.Comments({
+      provider: 'giscus',
+      options: {
+        // from data-repo
+        repo: "Dragonzhoulong/garden",
+        // from data-repo-id
+        repoId: 'R_kgDOOqWeRA',
+        // from data-category
+        category: 'Announcements',
+        // from data-category-id
+        categoryId: 'DIC_kwDOOqWeRM4CuMsA',
+        // from data-lang
+        mapping: "pathname",
+        inputPosition: "top",
+        theme: "preferred_color_scheme"
+
+        }
+    }),
+  ],  
+    footer: Component.Footer({
     links: {
       GitHub: "https://github.com/Dragonzhoulong",
     },

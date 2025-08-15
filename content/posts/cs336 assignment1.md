@@ -219,7 +219,7 @@ self.W.data = torch.randn_like(self.W) * 0.01
 2. **Embedding** - 有嵌入矩阵参数  
 3. **RMSNorm** - 有可学习的增益参数 g
 4. **PositionWiseFeedForward** - 包含多个 Linear 层
-5. **MultiHeadSelfAttention** - 有 $W_Q,$ $W_K,$ $W_V,$$W_O$ 参数
+5. **MultiHeadSelfAttention** - 有 $W_Q$,$ $W_K$, $W_V$, $W_O$ 参数
 6. **TransformerBlock** - 组合多个有参数的子模块
 7. **TransformerLM** - 整个模型的顶层容器
 
