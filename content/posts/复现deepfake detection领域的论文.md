@@ -1,3 +1,8 @@
+---
+created: 2025-09-27
+---
+
+
 # Unlocking the Hidden Potential of CLIP in Generalizable Deepfake  Detection
 
   https://www.alphaxiv.org/overview/2503.19683v2
@@ -6,7 +11,7 @@
 https://github.com/yermandy/deepfake-detection?tab=readme-ov-file
 ## 复现的环境配置
 
-重庆地区的一台 NVIDIA GeForce RTX 4090
+重庆地区的一台 NVIDIA GeForce RTX 4090（后面因为要微调训练跑 PEFT 更换成上海地区的H20）
 
 需要解决一些命令行工具的镜像问题（一般在我自己的机器上我会选择终端挂代理，毕竟有些镜像同步的有问题）
 
@@ -154,6 +159,9 @@ Epoch 0/9  ━━━╸━━━━━━━━━━━━━━━━━━━
 
 可以在该链接下查看训练时各指标变化图
 https://wandb.ai/alongforllm-ucas/deepfake?nw=nwuseralongforllm
+
+
+![[posts/images/截屏2025-09-27 20.17.07.png]]
 
 ### 最终测试
 
