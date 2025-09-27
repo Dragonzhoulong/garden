@@ -13,3 +13,4 @@ replit.nix
 *.mov
 .pdf
 content/templates
+content/.infio_json_db
