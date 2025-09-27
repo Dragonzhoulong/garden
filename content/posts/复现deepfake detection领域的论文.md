@@ -7,6 +7,14 @@ created: 2025-09-27
 
   https://www.alphaxiv.org/overview/2503.19683v2
 
+作者的方法核心在于利用预训练的 CLIP-ViT-L/14 图像编码器作为特征提取器，并结合策略性微调和正则化技术以增强泛化能力。
+
+作者没有采用完整模型微调（这有在有限的深度伪造数据上过拟合的风险），而是将 LN-tuning 作为其主要的参数高效微调（PEFT）策略。这种方法仅微调视觉编码器中的层归一化参数，在总计 3.03 亿参数中引入了大约 10.4 万个可训练参数（0.03%）。这种选择性训练保留了 CLIP 可泛化的预训练表示，同时允许任务特定的适应。
+
+该模型在 FaceForensics++（c 23 压缩）上进行训练，并使用自定义验证集，该验证集结合了 FF++测试样本和附加数据集，以更好地反映分布外性能。训练使用 Adam 优化器，采用余弦学习率调度和标准图像增强。
+评估遵循跨数据集协议以评估泛化能力，在 Celeb-DF-v 2、DFDC、Google 的 DFD、FFIW 和 DeepSpeak v 1.0 上进行测试。主要指标是视频级别的 AUROC，通过平均每个视频所有采样帧的预测值计算得出。
+
+
 可以看该论文由 ai 生成的 blog 与开源的代码
 https://github.com/yermandy/deepfake-detection?tab=readme-ov-file
 ## 复现的环境配置
@@ -171,7 +179,7 @@ https://wandb.ai/alongforllm-ucas/deepfake?nw=nwuseralongforllm
 python run.py --test
 ```
 
-测试集和训练集独立，当然该仓库的问题是测试集中的样本数量比较少。
+测试集和训练集独立，当然该仓库的问题是测试集中的样本数量比较少。（得到的 1.0 分数很可能是在这个特定的小样本上的一种“偶然的完美表现”。）
 
 ```
 Logs: runs/test/example-run/
