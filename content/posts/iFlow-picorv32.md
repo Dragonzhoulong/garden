@@ -1,3 +1,12 @@
+---
+title: " iFlow-picorv32 "
+date: " 2025-06-21"
+tags:
+  - iflow
+  - eda
+draft:
+---
+
 ## 首先运行uart设计熟悉iFlow流程
 
 uart设计是一种通用串行数据总线的设计，是一个百门级到千门级的设计，用于异步通信。下面将讲述一下如何将iFlow中的design更换为uart设计。

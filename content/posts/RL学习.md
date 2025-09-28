@@ -1,3 +1,11 @@
+---
+title: " RL学习 "
+date: " 2025-08-07"
+tags:
+  - rl
+  - llm
+draft:
+---
 
 ## 简单看看 
 
