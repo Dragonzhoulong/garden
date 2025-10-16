@@ -9,7 +9,7 @@ draft:
 
 https://github.com/aichipdesign/chipgptv
 
-该仓库代码很学术。大概逻辑就是把verilog 的端口描述作为 prompt 文件交给大模型去补全，多模态指用视觉大模型去读图片。
+该仓库代码很学术。大概逻辑就是把verilog 的端口描述作为 prompt 文件交给大模型去补全，多模态指用视觉大模型去读图片。我在通读 changkaiyan 学长等人的实现后，完成了一个最小实现，包含调取大模型根据电路描述文件生成 `verilog` 代码并且调用 `iverilog` 对 `verilog` 和 `testbench` 进行测试与验证，并且在过程中对用户进行友好的交互。
 
 ## 可以简单优化的地方
 + 并行提交需求
