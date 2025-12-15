@@ -41,6 +41,7 @@ Effort: Efficient Orthogonal Modeling for Generalizable AI-Generated Image Detec
 https://www.alphaxiv.org/abs/2411.15633v1
 
 感觉有点像把大模型领域已经用过的很多方法再在 deepfake detection 用一遍跑一下[捂脸]
+
 ## 复现的环境配置
 
 重庆地区的一台 NVIDIA GeForce RTX 4090（后面因为要微调训练跑 PEFT 更换成上海地区的H20）

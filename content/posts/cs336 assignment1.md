@@ -23,6 +23,48 @@ tags:
 2. 也没有大模型补全工具能够完成该作业
 3. 使用大模型补全工具会让使用者不能深层地理解该作业
 
+## Problem 1
+
+### 为什么用 UTF-8 来训练我们的 tokenizer，而不是 UTF-16 等
+```
+(a) What are some reasons to prefer training our tokenizer on UTF-8 encoded bytes, rather than
+UTF-16 or UTF-32? It may be helpful to compare the output of these encodings for various
+input strings.
+
+Deliverable: A one-to-two sentence response
+```
+
+根据维基百科对 UTF-8 的介绍
+
+> 截止到 2019 年 11 月，在所有网页中，UTF-8 编码应用率高达 94.3%（其中一些仅是 ASCII 编码，因为它是 UTF-8 的子集），而在排名最高的 1000 个网页中占 96％。
+
+用 UTF-8 是一种务实的表现（支持绝大部分网页），而且也可以产生更小的字符集和更有效率的 tokenizer
+```
+Training a tokenizer on UTF-8 bytes is preferable because UTF-8 is space-efficient for ASCII-heavy data (most text on the web), preserves compatibility with existing datasets, and avoids the fixed-width 2–4-byte overhead of UTF-16/UTF-32. Compared with UTF-16/32, UTF-8 produces shorter and more diverse byte sequences for common text, which leads to smaller vocabularies and more efficient tokenization.
+```
+### 考虑 UTF-8 的可变长度编码
+
+
+UTF-8 的一些性质
++ 前缀码（huffman 编码），可以做到即时解码
++ 可变长度（1，2，3，4 字节都有）（自 RFC 3629 规定后最多四个字节）
++ US-ACII 仅使用一个字节。拉丁文等欧洲文字两个字节。汉语等三个字节。辅助平面的（比如 emoji）四个字节。
++ 
+``` python
+(b) Consider the following (incorrect) function, which is intended to decode a UTF-8 byte string into
+a Unicode string. Why is this function incorrect? Provide an example of an input byte string
+that yields incorrect results.
+def decode_utf8_bytes_to_str_wrong(bytestring: bytes):
+return "".join([bytes([b]).decode("utf-8") for b in bytestring])
+>>> decode_utf8_bytes_to_str_wrong("hello".encode("utf-8"))
+'hello'
+
+Deliverable: An example input byte string for which decode_utf8_bytes_to_str_wrong pro-
+duces incorrect output, with a one-sentence explanation of why the function is incorrect
+```
+
+UTF-8 是可变长度的，需要根据前缀码来解析
+
 
 ### 创建 $W$ 的技巧
 
