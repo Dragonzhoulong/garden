@@ -848,6 +848,7 @@ def softmax_regression_epoch(X, y, theta, lr = 0.1, batch=100):
 ```
 
 
+
 ``` python
 def softmax_regression_epoch(X, y, theta, lr = 0.1, batch = 100):
 	"""Run a single epoch of SGD for softmax regression on the data, using
